@@ -5,13 +5,13 @@ require_once "../config.php";
 function registerUser($fullnames, $email, $password, $gender, $country){
     $conn = db();
     $full_names = $_POST['fullnames'];
-    $country = $_POST['email'];
-    $email = $_POST['country'];
+    $country = $_POST['country'];
+    $email = $_POST['email'];
     $gender = $_POST['gender'];
     $password = $_POST['password'];
 
     $query = "INSERT INTO Students (`id`, `full_names`, `country`, `email`, `gender`, `password`)
-                            VALUES ('$full_names', '$country', '$email', '$gender', '$password',);";
+                            VALUES ('', '$full_names', '$country', '$email', '$gender', '$password');";
                     if (mysqli_query($conn, $query)){
                         echo "User Successfully registered";
                     } else {
