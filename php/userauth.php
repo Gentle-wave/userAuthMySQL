@@ -35,9 +35,10 @@ function loginUser($email, $password){
     $sql = "SELECT * FROM Students where email = '$email' and password = '$password' ";
     $result = mysqli_query($conn, $sql);
     
-    if (mysqli_num_rows($result)>0){
+        if ($result){
         session_start();
         echo "Login Sucessful";
+        $_SESSION['username'] = $email;
         header("location: http://localhost/PHP/userAuthMySQL/dashboard.php");
     } else {
         echo "invalid password or user dosen't exist";
@@ -97,8 +98,8 @@ function getusers(){
 }
 
 function logout(){
-    if( $_SESSION['email']){
-        unset( $_SESSION['email']);
+    if( $_SESSION['username']){
+        unset( $_SESSION['username']);
         session_destroy();
         header("location: http://localhost/PHP/userAuthMySQL/forms/login.html");        
     }
